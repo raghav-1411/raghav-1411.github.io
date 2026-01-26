@@ -42,13 +42,22 @@
         </div>
         <div class="hero-content">
             <div class="hero-image">
-                <img src="imag1.png" alt="Profile Picture">
+                <img src="imag1.jpg" alt="Profile Picture">
             </div>
             <div class="hero-text">
                 <h1>Hi, I'm Raghav!</h1>
                 <p>Data Science · Machine Learning · Computer Vision · DSA Enthusiast</p>
-                <a href="#about" class="cta-btn">Learn More</a>
+
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
+                        <a href="Raghav.pdf" class="cta-btn" download onclick="trackResumeDownload()">
+                            Download Resume
+                        </a>
+                    <button class="cta-btn resume-view-btn" onclick="openResumeModal()">
+                        View Resume
+                    </button>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -245,5 +254,11 @@
         </div>
     </section>
     <script src="script.js"></script>
+    <div id="resumeModal" class="resume-modal">
+        <div class="resume-modal-content">
+            <span class="close-modal" onclick="closeResumeModal()">&times;</span>
+            <iframe src="Raghav.pdf"></iframe>
+        </div>
+    </div>
 </body>
 </html>
