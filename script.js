@@ -80,3 +80,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', toggleTheme);
 });
+
+function openResumeModal() {
+    document.getElementById("resumeModal").style.display = "block";
+}
+
+function closeResumeModal() {
+    document.getElementById("resumeModal").style.display = "none";
+}
+
+// Close modal when clicking outside content
+window.addEventListener("click", (e) => {
+    const modal = document.getElementById("resumeModal");
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+function trackResumeDownload() {
+    let count = localStorage.getItem("resumeDownloads") || 0;
+    count++;
+    localStorage.setItem("resumeDownloads", count);
+    console.log("Resume downloaded:", count);
+}
+
