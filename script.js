@@ -1,30 +1,82 @@
+
+const initTheme = () => {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+};
+
+
+const updateThemeIcon = (theme) => {
+    const themeToggle = document.getElementById('themeToggle');
+    const icon = themeToggle.querySelector('i');
+    
+    if (theme === 'light') {
+        icon.className = 'fas fa-sun';
+    } else {
+        icon.className = 'fas fa-moon';
+    }
+};
+
+// Toggle theme
+const toggleTheme = () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+};
+
+// Hamburger menu
 const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+const navLinks = document.querySelector('.nav-links');
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
 
-        // Scroll Animations
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.skill-item, .profile-card, .education-item, .project-card');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    el.style.opacity = '1';
-                }
-            });
-        };
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
 
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
+// Scroll Animations
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.skill-item, .profile-card, .education-item, .project-card');
+    elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            el.style.opacity = '1';
+        }
+    });
+};
 
-        // Navbar Background on Scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(0, 0, 0, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-            }
-        });
+window.addEventListener('scroll', animateOnScroll);
+window.addEventListener('load', animateOnScroll);
+
+// Navbar Background on Scroll
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    
+    if (window.scrollY > 50) {
+        navbar.style.background = currentTheme === 'dark' 
+            ? 'rgba(0, 0, 0, 0.98)' 
+            : 'rgba(255, 255, 255, 0.98)';
+    } else {
+        navbar.style.background = currentTheme === 'dark' 
+            ? 'rgba(0, 0, 0, 0.95)' 
+            : 'rgba(255, 255, 255, 0.95)';
+    }
+});
+
+// Initialize theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    
+    // Add event listener to theme toggle button
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', toggleTheme);
+});
