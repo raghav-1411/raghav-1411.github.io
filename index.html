@@ -29,6 +29,7 @@
                     </button>
                 </li>
             </ul>
+
         </div>
     </nav>
 
@@ -49,14 +50,13 @@
                 <p>Data Science · Machine Learning · Computer Vision · DSA Enthusiast</p>
 
                     <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
-                        <a href="Raghav.pdf" class="cta-btn" target="_blank" onclick="trackResumeDownload()">
+                        <a href="Raghav.pdf" class="cta-btn" download onclick="trackResumeDownload()">
                             Download Resume
                         </a>
-                        <button class="cta-btn resume-view-btn" onclick="openResumeModal()">
-                            View Resume
-                        </button>
-                    </div>
-
+                    <button class="cta-btn resume-view-btn" onclick="openResumeModal()">
+                        View Resume
+                    </button>
+                </div>
             </div>
 
         </div>
@@ -66,12 +66,11 @@
         <h2>About Me</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>I'm Raghav, a passionate Computer Science student at Thapar Institute of Engineering and Technology, India, with a strong foundation in Data Structures and Algorithms (DSA) and a growing interest in Data Science and Machine Learning. I’ve solved over 1000 problems on platforms like LeetCode, sharpening my problem-solving, analytical thinking, and coding abilities.</p>
+                <p>I'm Raghav, a passionate Computer Science student at Thapar Institute of Engineering and Technology, India, with a strong foundation in Data Structures and Algorithms (DSA) and a growing interest in Data Science and Machine Learning. I've solved over 1000 problems on platforms like LeetCode, sharpening my problem-solving, analytical thinking, and coding abilities.</p>
 
-<p>I have hands-on experience working with data and building intelligent systems using machine learning techniques. My work involves data preprocessing, feature engineering, model training, evaluation, and optimization, along with exposure to natural language processing and recommendation algorithms.</p>
+                <p>I have hands-on experience working with data and building intelligent systems using machine learning techniques. My work involves data preprocessing, feature engineering, model training, evaluation, and optimization, along with exposure to natural language processing and recommendation algorithms.</p>
 
-<p>In addition, I have experience developing clean and responsive user interfaces using HTML, CSS, and JavaScript, and I am currently enhancing my UI skills with Tailwind CSS. This combination allows me to effectively visualize and deploy data-driven solutions while writing clean, efficient, and scalable code.</p>
-
+                <p>In addition, I have experience developing clean and responsive user interfaces using HTML, CSS, and JavaScript, and I am currently enhancing my UI skills with Tailwind CSS. This combination allows me to effectively visualize and deploy data-driven solutions while writing clean, efficient, and scalable code.</p>
             </div>
             <div class="about-image">
                 <img src="img.webp" alt="About Me">
@@ -90,14 +89,15 @@
             </div>
             <div class="education-item">
                 <h3>Floradale Public School</h3>
-                <p>High School - CBSE </p>
-                <p>SriGanganagar , Rajasthan</p>
+                <p>High School - CBSE</p>
+                <p>SriGanganagar, Rajasthan</p>
                 <p>2021-2023</p>
             </div>
         </div>
     </section>
+
     <div>
-        <section id="achievements" class="achievements">
+    <section id="achievements" class="achievements">
         <h2>Achievements</h2>
 
         <div class="achievements-grid">
@@ -112,43 +112,47 @@
                 </p>
             </div>
 
-        <div class="achievement-card">
-            <i class="fas fa-briefcase"></i>
-            <h3>McKinsey Forward Program</h3>
-            <p>
-                Selected for the prestigious <strong>McKinsey Forward Program</strong>
-                by McKinsey & Company, focused on problem-solving and professional skills.
-            </p>
+            <div class="achievement-card">
+                <i class="fas fa-briefcase"></i>
+                <h3>McKinsey Forward Program</h3>
+                <p>
+                    Selected for the prestigious <strong>McKinsey Forward Program</strong>
+                    by McKinsey & Company, focused on problem-solving and professional skills.
+                </p>
+            </div>
+
+            <div class="achievement-card">
+                <i class="fas fa-code"></i>
+                <h3>Top LeetCode Performer with 1000+ Problems Solved</h3>
+                <p>
+                    Ranked among the <strong>top 30,000</strong> out of
+                    <strong>5 million+</strong> users on LeetCode, demonstrating strong
+                    algorithmic and problem-solving skills.
+                </p>
+            </div>
+
+            <div class="achievement-card">
+                <i class="fas fa-medal"></i>
+                <h3>AlgoUniversity Technology Fellow</h3>
+                <p>
+                    Selected among the <strong>Top 450 students</strong> from over
+                    <strong>20,000 applicants</strong> nationwide for the AlgoUniversity
+                    Technology Fellowship.
+                </p>
+            </div>
+
+
         </div>
+    </section>
 
-        <div class="achievement-card">
-            <i class="fas fa-brain"></i>
-            <h3>Top LeetCode Performer with 1000+ Problems Solved</h3>
-            <p>
-                Ranked among the <strong>top 30,000</strong> out of
-                <strong>5 million+</strong> users on LeetCode, demonstrating strong
-                algorithmic and problem-solving skills.
-            </p>
-        </div>
-
-        <div class="achievement-card">
-            <i class="fas fa-medal"></i>
-            <h3>AlgoUniversity Technology Fellow</h3>
-            <p>
-                Selected among the <strong>Top 450 students</strong> from over
-                <strong>20,000 applicants</strong> nationwide for the AlgoUniversity
-                Technology Fellowship.
-            </p>
-        </div>
-
-    </div>
-</section>
-    </div>
-
+</div>
 
     <section id="skills" class="skills">
         <h2>My Skills</h2>
-        <div class="skill-item">
+        <div class="skills-grid">
+
+    <!-- Programming Languages -->
+    <div class="skill-item">
         <i class="fab fa-python"></i>
         <h3>Python</h3>
     </div>
@@ -242,39 +246,56 @@
     </div>
 
 </div>
-        <h2 style="margin-top: 3rem;">Frameworks and Libraries</h2>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <i class="fab fa-react"></i>
-                <h3>React</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-wind"></i>
-                <h3>Tailwind CSS</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-book"></i>
-                <h3>Scikit-learn</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-project-diagram"></i>
-                <h3>NetworkX</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-camera"></i>
-                <h3>OpenCV</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-chart-bar"></i>
-                <h3>Matplotlib</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-table"></i>
-                <h3>Pandas</h3>
-            </div>
-        </div>
-    </section>
 
+        <h2 style="margin-top: 3rem;">Frameworks & Libraries</h2>
+
+<div class="skills-grid">
+    <div class="skill-item">
+        <i class="fas fa-wind"></i>
+        <h3>Tailwind CSS</h3>
+    </div>
+    <div class="skill-item">
+        <i class="fas fa-flask"></i>
+        <h3>Flask</h3>
+    </div>
+    <div class="skill-item">
+        <i class="fas fa-stream"></i>
+        <h3>Streamlit</h3>
+    </div>
+    <div class="skill-item">
+        <i class="fas fa-book"></i>
+        <h3>Scikit-learn</h3>
+    </div>
+    <div class="skill-item">
+        <i class="fas fa-table"></i>
+        <h3>Pandas</h3>
+    </div>
+    <div class="skill-item">
+        <i class="fas fa-chart-bar"></i>
+        <h3>Matplotlib</h3>
+    </div>
+    <div class="skill-item">
+        <i class="fas fa-camera"></i>
+        <h3>OpenCV</h3>
+    </div>
+    <div class="skill-item">
+        <i class="fas fa-project-diagram"></i>
+        <h3>NetworkX</h3>
+    </div>
+    <div class="skill-item">
+        <i class="fas fa-atom"></i>
+        <h3>TensorFlow</h3>
+    </div>
+    <div class="skill-item">
+        <i class="fas fa-cubes"></i>
+        <h3>Keras</h3>
+    </div>
+</div>
+
+</div>
+
+</div>
+    </section>
     <section id="projects" class="projects">
         <h2>My Projects</h2>
         <div class="projects-grid">
@@ -322,5 +343,6 @@
             <iframe src="Raghav.pdf"></iframe>
         </div>
     </div>
+
 </body>
 </html>
