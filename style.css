@@ -999,6 +999,3 @@
     drop-shadow(0 0 30px var(--accent2));
 }
 
-#experience .exp-card + .exp-card {
-  margin-top: 2rem;
-}
