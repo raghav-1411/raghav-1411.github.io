@@ -9,6 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
+<script>
+  // Apply saved theme before first paint to avoid a flash
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
 
 </head>
 <body>
@@ -36,6 +48,9 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#connect">Connect</a></li>
   </ul>
+  <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme" title="Switch theme">
+    <i class="fas fa-moon" id="themeIcon"></i>
+  </button>
   <button class="nav-toggle" id="navToggle" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -50,6 +65,10 @@
   <a href="#skills" class="nav-mob-link">Skills</a>
   <a href="#projects" class="nav-mob-link">Projects</a>
   <a href="#connect" class="nav-mob-link">Connect</a>
+  <button class="theme-toggle theme-toggle-mob" id="themeToggleMob" aria-label="Switch theme" title="Switch theme">
+    <i class="fas fa-moon" id="themeIconMob"></i>
+    <span id="themeLabelMob">Light mode</span>
+  </button>
 </div>
 
 <!-- HERO -->
@@ -62,7 +81,7 @@
       <span class="line2 glitch" id="heroName">Raghav Chhabra</span>
     </h1>
     <p class="hero-tagline">
-      <em>Data Science · Machine Learning · Computer Vision</em><br>
+      <em>Data Engineering · Machine Learning · Data Science</em><br>
       CS Student at <em>Thapar Institute of Engineering and Technology</em>
     </p>
     <div class="hero-cta">
@@ -75,8 +94,12 @@
         <div class="stat-label">Problems Solved</div>
       </div>
       <div class="stat">
-        <div class="stat-num">Top <span class="counter" data-target="20">0</span>K</div>
+        <div class="stat-num">Top <span class="counter" data-target="15">0</span>K</div>
         <div class="stat-label">LeetCode Global</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="counter" data-target="9">0</span>.0</div>
+        <div class="stat-label">CGPA / 10</div>
       </div>
     </div>
   </div>
@@ -102,12 +125,14 @@
         <h2 class="section-title">Building Intelligent<br>Systems that Matter</h2>
         <div class="divider"></div>
         <p>I'm <strong>Raghav Chhabra</strong>, a passionate Computer Science student at <strong>Thapar Institute of Engineering and Technology</strong>, India, with a strong foundation in Data Structures and Algorithms and a deep interest in Data Science and Machine Learning.</p>
-        <p>I've solved over <strong>1000+ problems</strong> on platforms like LeetCode, sharpening my problem-solving, analytical thinking, and coding abilities. My work spans data preprocessing, feature engineering, model training, and evaluation — with exposure to NLP and recommendation algorithms.</p>
+        <p>I've solved over <strong>1000+ problems</strong> on LeetCode (<strong>top 15,000 of 5M+ users</strong>), sharpening my problem-solving, analytical thinking, and coding abilities. My work spans data preprocessing, feature engineering, model training, and evaluation — with exposure to NLP and recommendation algorithms.</p>
+        <p>At <strong>Axis Bank's Business Intelligence Unit</strong> I worked at real production scale — building <strong>PySpark / Spark SQL</strong> pipelines over bureau tables of <strong>730M</strong> and <strong>10B records</strong>, and cutting one pipeline's runtime by <strong>90%</strong> (1 hr → 4–5 min).</p>
         <p>Beyond ML, I develop clean, responsive UIs using HTML, CSS, JavaScript, and Tailwind CSS — enabling me to build and deploy data-driven products end-to-end.</p>
         <div class="about-highlights">
           <span class="highlight-chip">📍 Patiala, India</span>
           <span class="highlight-chip">🎓 BE Computer Engineering</span>
           <span class="highlight-chip">🤖 AI / ML Enthusiast</span>
+          <span class="highlight-chip">⚡ PySpark &amp; Big Data</span>
           <span class="highlight-chip">💻 1000+ LeetCode Problems</span>
         </div>
       </div>
@@ -248,9 +273,69 @@
 
     <div class="achieve-grid">
 
-      <!-- Flipkart GRID -->
+      <!-- TECHMCODE -->
       <div class="achieve-card reveal">
+        <div class="achieve-icon">🚀</div>
+        <div class="achieve-brand">
+          <div class="brand-logo logo-fill"><img src="logos/techm.png" alt="Tech Mahindra logo" loading="lazy"><span>TM</span></div>
+          <div class="brand-name">Tech Mahindra</div>
+        </div>
+        <div class="achieve-title">
+          #TECHMCODE by Tech Mahindra — Finalist
+        </div>
+
+        <div class="achieve-desc">
+          Among the <strong>top 82 finalists</strong> from
+          <strong>30,000+ participants</strong> nationwide — the
+          <strong>top 0.27%</strong>. Qualified for the
+          <strong>Grand Finale</strong> of The Ultimate Hack League,
+          held in Hyderabad.
+        </div>
+
+        <div class="cert-row">
+          <a href="TechMCode_Finalist.png" target="_blank" class="cert-btn">
+            Finalist Confirmation
+          </a>
+        </div>
+      </div>
+
+
+      <!-- Naukri Campus Young Turks -->
+      <div class="achieve-card reveal" style="transition-delay:0.05s">
+        <div class="achieve-icon">📊</div>
+        <div class="achieve-brand">
+          <div class="brand-logo logo-pad logo-wide"><img src="logos/naukri.png" alt="Naukri Campus logo" loading="lazy"><span>naukri</span></div>
+          <div class="brand-name">Naukri Campus</div>
+        </div>
+        <div class="achieve-title">
+          Naukri Campus Young Turks 2025 — AIR 2654
+        </div>
+
+        <div class="achieve-desc">
+          Scored <strong>98.78 percentile</strong> in Round 1 among
+          <strong>20,000+ participants</strong>, then finished
+          <strong>AIR 2654</strong> in the Round 2 leaderboard for the
+          Coding, Data Science &amp; AI track.
+        </div>
+
+        <div class="cert-row">
+          <a href="YoungTurks_R1.pdf" target="_blank" class="cert-btn">
+            Round 1 Certificate
+          </a>
+          <a href="YoungTurks_R2.png" target="_blank" class="cert-btn">
+            Round 2 Leaderboard
+          </a>
+        </div>
+      </div>
+
+
+      <!-- Flipkart GRID -->
+      <div class="achieve-card reveal" style="transition-delay:0.1s">
         <div class="achieve-icon">🏆</div>
+        <div class="achieve-brand">
+          <div class="brand-logo logo-fill"><img src="logos/flipkart.png" alt="Flipkart logo" loading="lazy"><span>Flipkart</span></div>
+          <div class="brand-name">Flipkart</div>
+        </div>
         <div class="achieve-title">
           Flipkart GRID 7.0 — National Semi-Finalist
         </div>
@@ -269,8 +354,11 @@
 
 
       <!-- McKinsey -->
-      <div class="achieve-card reveal" style="transition-delay:0.1s">
+      <div class="achieve-card reveal" style="transition-delay:0.25s">
         <div class="achieve-icon">💼</div>
+        <div class="achieve-brand brand-lockup">
+          <div class="brand-logo logo-lockup"><img src="logos/mckinsey.png" alt="McKinsey &amp; Company logo" loading="lazy"><span>McKinsey &amp; Company</span></div>
+        </div>
         <div class="achieve-title">McKinsey Forward Program</div>
 
         <div class="achieve-desc">
@@ -287,15 +375,20 @@
 
 
       <!-- LeetCode -->
-      <div class="achieve-card reveal" style="transition-delay:0.15s">
+      <div class="achieve-card reveal" style="transition-delay:0.2s">
         <div class="achieve-icon">⌨️</div>
+        <div class="achieve-brand">
+          <div class="brand-logo logo-pad"><img src="logos/leetcode.png" alt="LeetCode logo" loading="lazy"><span>LC</span></div>
+          <div class="brand-name">LeetCode</div>
+        </div>
         <div class="achieve-title">
           Top LeetCode Performer — 1000+ Problems
         </div>
 
         <div class="achieve-desc">
-          Ranked among the <strong>top 20,000</strong> out of
-          <strong>5M+ users</strong>. 365-day streak holder.
+          Ranked among the <strong>top 15,000</strong> out of
+          <strong>5M+ users</strong>; <strong>1000+ DSA problems</strong> solved,
+          500-day streak holder.
         </div>
 
         <a href="https://leetcode.com/raghav1411/"
@@ -307,15 +400,19 @@
 
 
       <!-- AlgoUniversity -->
-      <div class="achieve-card reveal" style="transition-delay:0.2s">
+      <div class="achieve-card reveal" style="transition-delay:0.3s">
         <div class="achieve-icon">🥇</div>
+        <div class="achieve-brand brand-lockup">
+          <div class="brand-logo logo-lockup"><img src="logos/algouniversity.png" alt="AlgoUniversity logo" loading="lazy"><span>AlgoUniversity</span></div>
+        </div>
         <div class="achieve-title">
           AlgoUniversity Technology Fellow
         </div>
 
         <div class="achieve-desc">
-          Selected among the <strong>Top 450 students</strong> nationwide
-          for the AlgoUniversity Technology Fellowship.
+          Selected among the <strong>Top 450</strong> from
+          <strong>20,000+ applicants</strong> nationwide for the
+          AlgoUniversity Technology Fellowship.
         </div>
 
         <a href="Algo.jpg"
@@ -351,6 +448,10 @@
         <span class="marquee-item">Data Science</span>
         <span class="marquee-item">NLP</span>
         <span class="marquee-item">SQL</span>
+        <span class="marquee-item">PySpark</span>
+        <span class="marquee-item">Spark SQL</span>
+        <span class="marquee-item">PyTorch</span>
+        <span class="marquee-item">XGBoost</span>
         <span class="marquee-item">TensorFlow</span>
         <span class="marquee-item">Scikit-learn</span>
         <span class="marquee-item">OpenCV</span>
@@ -368,6 +469,10 @@
         <span class="marquee-item">Data Science</span>
         <span class="marquee-item">NLP</span>
         <span class="marquee-item">SQL</span>
+        <span class="marquee-item">PySpark</span>
+        <span class="marquee-item">Spark SQL</span>
+        <span class="marquee-item">PyTorch</span>
+        <span class="marquee-item">XGBoost</span>
         <span class="marquee-item">TensorFlow</span>
         <span class="marquee-item">Scikit-learn</span>
         <span class="marquee-item">OpenCV</span>
@@ -386,7 +491,7 @@
         <span class="skill-tag"><span class="dot"></span>JavaScript</span>
         <span class="skill-tag"><span class="dot"></span>HTML</span>
         <span class="skill-tag"><span class="dot"></span>CSS</span>
-        <span class="skill-tag"><span class="dot"></span>SQL</span>
+        <span class="skill-tag"><span class="dot"></span>SQL (MySQL)</span>
         <span class="skill-tag"><span class="dot"></span>SQLite3</span>
         <span class="skill-tag"><span class="dot"></span>LaTeX</span>
       </div>
@@ -410,11 +515,29 @@
     </div>
 
     <div class="skills-section reveal">
+      <div class="skills-section-title">Data Engineering & Big Data</div>
+      <div class="skills-grid">
+        <span class="skill-tag"><span class="dot"></span>PySpark</span>
+        <span class="skill-tag"><span class="dot"></span>Spark SQL</span>
+        <span class="skill-tag"><span class="dot"></span>ETL Pipeline Design</span>
+        <span class="skill-tag"><span class="dot"></span>Data Validation & Reconciliation</span>
+        <span class="skill-tag"><span class="dot"></span>Performance Tuning & Caching</span>
+        <span class="skill-tag"><span class="dot"></span>JSON-Driven Config Frameworks</span>
+        <span class="skill-tag"><span class="dot"></span>Pipeline Automation</span>
+        <span class="skill-tag"><span class="dot"></span>Automated Excel Reporting</span>
+        <span class="skill-tag"><span class="dot"></span>Process Improvement</span>
+      </div>
+    </div>
+
+    <div class="skills-section reveal">
       <div class="skills-section-title">Frameworks & Libraries</div>
       <div class="skills-grid">
         <span class="skill-tag"><span class="dot"></span>Scikit-learn</span>
         <span class="skill-tag"><span class="dot"></span>TensorFlow</span>
         <span class="skill-tag"><span class="dot"></span>Keras</span>
+        <span class="skill-tag"><span class="dot"></span>PyTorch</span>
+        <span class="skill-tag"><span class="dot"></span>XGBoost</span>
+        <span class="skill-tag"><span class="dot"></span>CatBoost</span>
         <span class="skill-tag"><span class="dot"></span>Pandas</span>
         <span class="skill-tag"><span class="dot"></span>NumPy</span>
         <span class="skill-tag"><span class="dot"></span>Matplotlib</span>
@@ -438,6 +561,20 @@
         <span class="skill-tag"><span class="dot"></span>Git & GitHub</span>
       </div>
     </div>
+
+    <div class="skills-section reveal">
+      <div class="skills-section-title">Coursework & Tools</div>
+      <div class="skills-grid">
+        <span class="skill-tag"><span class="dot"></span>Probability & Statistics</span>
+        <span class="skill-tag"><span class="dot"></span>Data Structures and Algorithms</span>
+        <span class="skill-tag"><span class="dot"></span>Artificial Intelligence</span>
+        <span class="skill-tag"><span class="dot"></span>Machine Learning</span>
+        <span class="skill-tag"><span class="dot"></span>Microsoft Excel</span>
+        <span class="skill-tag"><span class="dot"></span>PowerPoint</span>
+        <span class="skill-tag"><span class="dot"></span>Word</span>
+        <span class="skill-tag"><span class="dot"></span>LaTeX</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -453,8 +590,8 @@
     <div class="projects-grid">
       <div class="project-card reveal">
         <div class="project-num">01</div>
-        <div class="project-title">Energy Consumption Forecasting</div>
-        <div class="project-desc">End-to-end ML pipeline on the UCI Household Electric Power Consumption dataset. Engineered 80+ time-series features (lag, rolling stats, EWMA, cyclical encoding). Achieved <strong style="color:var(--accent2)">99.53% forecasting accuracy</strong> with Ridge Regression across 7 trained models.</div>
+        <div class="project-title">Time-Series Forecasting Engine</div>
+        <div class="project-desc">End-to-end quantitative forecasting pipeline built on <strong>millions of records</strong> (UCI Household Electric Power Consumption). Engineered <strong>80+ predictive signals</strong> (lag, rolling stats, EWMA, cyclical encoding) and benchmarked <strong>7 regression models</strong> (Random Forest, XGBoost, CatBoost, Ridge) — reaching <strong style="color:var(--accent2)">99.53% forecasting accuracy</strong> under rigorous out-of-sample validation.</div>
         <div class="project-tags">
           <span class="project-tag">Python</span>
           <span class="project-tag">XGBoost</span>
@@ -513,12 +650,12 @@
         </div>
       </div>
       <div class="coding-stat">
-        <div class="coding-stat-val">Top 20%</div>
-        <div class="coding-stat-label">LeetCode Global Rank</div>
+        <div class="coding-stat-val">Top 15K</div>
+        <div class="coding-stat-label">Global Rank · 5M+ Users</div>
         <div style="margin-top:0.8rem; color: var(--muted); font-size:0.8rem;">Contest Rating 1624</div>
       </div>
       <div class="coding-stat">
-        <div class="coding-stat-val">365</div>
+        <div class="coding-stat-val">500</div>
         <div class="coding-stat-label">Day Streak Badge</div>
         <div style="margin-top:0.8rem;"><a href="https://leetcode.com/u/raghav1411/" target="_blank" class="project-link">View LeetCode <i class="fas fa-arrow-right"></i></a></div>
       </div>
@@ -550,7 +687,11 @@
 <div class="achievement-dock">
 
   <a href="https://leetcode.com/u/raghav1411/" target="_blank" class="dock-badge">
-    <img src="365.png">
+    <img src="500.png" alt="LeetCode 500 day streak badge">
+  </a>
+
+  <a href="https://leetcode.com/u/raghav1411/" target="_blank" class="dock-badge">
+    <img src="365.png" alt="LeetCode 365 day streak badge">
   </a>
 
   <a href="https://leetcode.com/u/raghav1411/" target="_blank" class="dock-badge">
