@@ -29,6 +29,7 @@ document.querySelectorAll('a, button, .skill-tag, .edu-card, .achieve-card, .pro
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
+let particleColor = getComputedStyle(document.documentElement).getPropertyValue('--particle').trim() || '#00d4ff';
 
 function resize() {
   canvas.width = window.innerWidth;
@@ -59,7 +60,7 @@ class Particle {
     const fade = Math.sin((this.life / this.maxLife) * Math.PI);
     ctx.save();
     ctx.globalAlpha = this.opacity * fade;
-    ctx.fillStyle = '#00d4ff';
+    ctx.fillStyle = particleColor;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
@@ -78,7 +79,7 @@ function drawParticles() {
       if (dist < 120) {
         ctx.save();
         ctx.globalAlpha = (1 - dist / 120) * 0.08;
-        ctx.strokeStyle = '#00d4ff';
+        ctx.strokeStyle = particleColor;
         ctx.lineWidth = 0.5;
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
@@ -139,7 +140,7 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
 // TYPING EFFECT for hero subtitle (subtle)
-const phrases = ['Data Science Enthusiast', 'ML Engineer', 'DSA Enthusiast', 'Problem Solver', 'CS Student @ TIET'];
+const phrases = ['Data Engineer', 'Data Science Enthusiast', 'ML Engineer', 'PySpark Developer', 'DSA Enthusiast', 'Problem Solver', 'CS Student @ TIET'];
 let phraseIdx = 0, charIdx = 0, isDeleting = false;
 const taglineEl = document.querySelector('.hero-tagline em');
 if (taglineEl) {
@@ -338,5 +339,53 @@ function animateSparkles() {
 animateSparkles();
 
 document.querySelectorAll(
-'a, button, .skill-tag, .edu-card, .achieve-card, .project-card, .coding-stat, .highlight-chip, .badge'
-)
+  'a, button, .skill-tag, .edu-card, .achieve-card, .project-card, .coding-stat, .highlight-chip, .badge, .brand-logo, .theme-toggle'
+).forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+});
+
+// ===== THEME TOGGLE (light / dark) =====
+(function () {
+  const root = document.documentElement;
+  const btns = [document.getElementById('themeToggle'), document.getElementById('themeToggleMob')].filter(Boolean);
+  const icons = [document.getElementById('themeIcon'), document.getElementById('themeIconMob')].filter(Boolean);
+  const label = document.getElementById('themeLabelMob');
+
+  function paint(theme) {
+    root.setAttribute('data-theme', theme);
+    const goingTo = theme === 'dark' ? 'light' : 'dark';
+    icons.forEach(i => { i.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun'; });
+    btns.forEach(b => b.setAttribute('aria-label', 'Switch to ' + goingTo + ' theme'));
+    if (label) label.textContent = goingTo === 'light' ? 'Light mode' : 'Dark mode';
+    // keep the particle field readable against the new background
+    particleColor = getComputedStyle(root).getPropertyValue('--particle').trim() || '#00d4ff';
+  }
+
+  // The inline <head> script already set data-theme; sync the UI to it.
+  paint(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+
+  btns.forEach(btn => btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    btn.classList.add('switching');
+    setTimeout(() => btn.classList.remove('switching'), 500);
+    paint(next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  }));
+
+  // Follow the OS only while the visitor hasn't picked a theme themselves
+  const mq = window.matchMedia('(prefers-color-scheme: light)');
+  const onOsChange = e => {
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (err) {}
+    if (!saved) paint(e.matches ? 'light' : 'dark');
+  };
+  if (mq.addEventListener) mq.addEventListener('change', onOsChange);
+  else if (mq.addListener) mq.addListener(onOsChange);
+})();
+
+// Logo fallback: if a brand image 404s, show the text monogram instead
+document.querySelectorAll('.brand-logo img').forEach(img => {
+  img.addEventListener('error', () => img.closest('.brand-logo').classList.add('logo-fallback'));
+  if (img.complete && img.naturalWidth === 0) img.closest('.brand-logo').classList.add('logo-fallback');
+});
