@@ -1004,24 +1004,179 @@
 }
 
 
-/* Achievement Logos */
-.logo-icon {
-  width: 64px;
-  height: 64px;
+/* =========================================
+   ACHIEVEMENT BRAND / LOGO
+========================================= */
+
+.achieve-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 58px;
+  margin-bottom: 1.35rem;
+}
+
+
+/* Logo container */
+.brand-logo {
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.2rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 255, 0.025);
+
   overflow: hidden;
+
+  position: relative;
 }
 
-.logo-icon img {
-  width: 72%;
-  height: 72%;
+
+/* Actual logo */
+.brand-logo img {
+  width: 78%;
+  height: 78%;
+
   object-fit: contain;
+
+  display: block;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Company name */
+.brand-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+
+  color: rgba(255, 255, 255, 0.52);
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   INDIVIDUAL LOGO SIZING
+========================================= */
+
+/* Tech Mahindra is a wide wordmark */
+.techmahindra-logo img {
+  width: 90%;
+  height: auto;
+}
+
+
+/* Flipkart is also a horizontal wordmark */
+.flipkart-logo img {
+  width: 88%;
+  height: auto;
+}
+
+
+/* McKinsey is extremely wide */
+.mckinsey-logo img {
+  width: 92%;
+  height: auto;
+}
+
+
+/* AlgoUniversity / Naukri */
+.algo-logo img,
+.naukri-logo img {
+  width: 55%;
+  height: 55%;
+}
+
+
+/* LeetCode is a symbol, not a wordmark */
+.leetcode-logo img {
+  width: 48%;
+  height: 58%;
+}
+
+
+/* =========================================
+   FALLBACK
+========================================= */
+
+.brand-logo > span {
+  display: none;
+
+  font-size: 0.8rem;
+  font-weight: 800;
+
+  letter-spacing: -0.02em;
+
+  color: #00d9ff;
+}
+
+
+.brand-logo.logo-fallback > span {
   display: block;
 }
 
+
+/* =========================================
+   HOVER
+========================================= */
+
+.achieve-card:hover .brand-logo {
+  border-color: rgba(0, 217, 255, 0.35);
+
+  background: rgba(0, 217, 255, 0.055);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 25px rgba(0, 217, 255, 0.08);
+}
+
+.achieve-card:hover .brand-name {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+
+/* Smooth logo animation */
+.brand-logo {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .achieve-brand {
+    margin-bottom: 1rem;
+  }
+
+  .brand-logo {
+    width: 52px;
+    height: 52px;
+  }
+
+  .brand-name {
+    font-size: 0.72rem;
+  }
+
+}
